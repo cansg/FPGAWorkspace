@@ -1,0 +1,2 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sources_1/imports/rtl/SPI_to_Serial.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'spi_to_serial'

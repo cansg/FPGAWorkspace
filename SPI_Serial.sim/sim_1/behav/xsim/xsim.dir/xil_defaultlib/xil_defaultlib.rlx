@@ -1,0 +1,9 @@
+0.7
+2020.1
+May 27 2020
+20:09:33
+C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.srcs/sources_1/imports/rtl/test_serial.vhd,1604833169,vhdl,,,,test_serial,,,,,,,,
+C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.srcs/sources_1/imports/rtl/uart_rx.vhd,1517323468,vhdl,,,,uart_rx,,,,,,,,
+C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.srcs/sources_1/imports/rtl/uart_tx.vhd,1517323496,vhdl,,,,uart_tx,,,,,,,,
+C:/Users/cansuge/Documents/FPGA/spi-master-master/VHDL/source/SPI_Master.vhd,1604839300,vhdl,C:/Users/cansuge/Documents/FPGA/spi-master-master/VHDL/source/SPI_Master_With_Single_CS.vhd,,,spi_master,,,,,,,,
+C:/Users/cansuge/Documents/FPGA/spi-master-master/VHDL/source/SPI_Master_With_Single_CS.vhd,1604836629,vhdl,,,,spi_master_with_single_cs,,,,,,,,

@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/cansuge/Documents/FPGA/spi-master-master/VHDL/source/SPI_Master.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPI_Master'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/cansuge/Documents/FPGA/spi-master-master/VHDL/source/SPI_Master_With_Single_CS.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SPI_Master_With_Single_CS'

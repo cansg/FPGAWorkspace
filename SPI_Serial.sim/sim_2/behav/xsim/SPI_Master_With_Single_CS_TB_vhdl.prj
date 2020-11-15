@@ -1,0 +1,8 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../spi-master-master/VHDL/source/SPI_Master.vhd" \
+"../../../../../../spi-master-master/VHDL/source/SPI_Master_With_Single_CS.vhd" \
+"../../../../SPI_Serial.srcs/sim_1/new/SPI_tb.vhd" \
+
+# Do not sort compile order
+nosort

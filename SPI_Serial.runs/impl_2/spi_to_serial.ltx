@@ -1,0 +1,386 @@
+{
+    "ltx_root": {
+        "version": 4,
+        "minor": 0,
+        "ltx_data": [
+            {
+                "name": "EDA_PROBESET",
+                "active": true,
+                "debug_cores": [
+                    {
+                        "type": "XSDB_V3",
+                        "name": "dbg_hub",
+                        "spec": "labtools_xsdbm_v3",
+                        "clk_input_freq_hz": "100000418"
+                    },
+                    {
+                        "type": "ILA_V3",
+                        "name": "ILA",
+                        "spec": "labtools_ila_v6",
+                        "ipName": "ila",
+                        "core_location": {
+                            "user_chain": 1,
+                            "slave_index": 0,
+                            "bscan_switch_index": 0
+                        },
+                        "uuid": "7C6A6FE445255A57804F5689CD836BF4",
+                        "pins": [
+                            {
+                                "name": "probe0",
+                                "id": 0,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 7,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "w_Master_RX_Byte",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "w_Master_RX_Byte[7]"
+                                            },
+                                            {
+                                                "name": "w_Master_RX_Byte[6]"
+                                            },
+                                            {
+                                                "name": "w_Master_RX_Byte[5]"
+                                            },
+                                            {
+                                                "name": "w_Master_RX_Byte[4]"
+                                            },
+                                            {
+                                                "name": "w_Master_RX_Byte[3]"
+                                            },
+                                            {
+                                                "name": "w_Master_RX_Byte[2]"
+                                            },
+                                            {
+                                                "name": "w_Master_RX_Byte[1]"
+                                            },
+                                            {
+                                                "name": "w_Master_RX_Byte[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe1",
+                                "id": 1,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 7,
+                                "portIndex": 1,
+                                "nets": [
+                                    {
+                                        "name": "ser_tx_byte",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "ser_tx_byte[7]"
+                                            },
+                                            {
+                                                "name": "ser_tx_byte[6]"
+                                            },
+                                            {
+                                                "name": "ser_tx_byte[5]"
+                                            },
+                                            {
+                                                "name": "ser_tx_byte[4]"
+                                            },
+                                            {
+                                                "name": "ser_tx_byte[3]"
+                                            },
+                                            {
+                                                "name": "ser_tx_byte[2]"
+                                            },
+                                            {
+                                                "name": "ser_tx_byte[1]"
+                                            },
+                                            {
+                                                "name": "ser_tx_byte[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe2",
+                                "id": 2,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 7,
+                                "portIndex": 2,
+                                "nets": [
+                                    {
+                                        "name": "spi_tx_byte",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "spi_tx_byte[7]"
+                                            },
+                                            {
+                                                "name": "spi_tx_byte[6]"
+                                            },
+                                            {
+                                                "name": "spi_tx_byte[5]"
+                                            },
+                                            {
+                                                "name": "spi_tx_byte[4]"
+                                            },
+                                            {
+                                                "name": "spi_tx_byte[3]"
+                                            },
+                                            {
+                                                "name": "spi_tx_byte[2]"
+                                            },
+                                            {
+                                                "name": "spi_tx_byte[1]"
+                                            },
+                                            {
+                                                "name": "spi_tx_byte[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe3",
+                                "id": 3,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 3,
+                                "nets": [
+                                    {
+                                        "name": "ila_test_SPI_CLK",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe4",
+                                "id": 4,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 4,
+                                "nets": [
+                                    {
+                                        "name": "ila_test_CS_n",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe5",
+                                "id": 5,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 5,
+                                "nets": [
+                                    {
+                                        "name": "ila_test_MOSI",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe6",
+                                "id": 6,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 6,
+                                "nets": [
+                                    {
+                                        "name": "ila_test_MISO",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe7",
+                                "id": 7,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 7,
+                                "nets": [
+                                    {
+                                        "name": "ila_test_tx_dv",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe8",
+                                "id": 8,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 8,
+                                "nets": [
+                                    {
+                                        "name": "ila_test_rx_dv",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe9",
+                                "id": 9,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 9,
+                                "nets": [
+                                    {
+                                        "name": "ila_test_clk_100",
+                                        "isBus": false,
+                                        "parentNetId": 30
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "parent_nets": [
+                    {
+                        "id": 30,
+                        "name": "ila_test_clk_100",
+                        "state_reg": [
+                            {
+                                "name": "FSM_sequential_state_serial_send_reg[0]",
+                                "states": [
+                                    {
+                                        "name": "send_serial_gyro_x_2_end",
+                                        "val": "00100"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_x_1_end",
+                                        "val": "00010"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_z_2",
+                                        "val": "10111"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_x_1_end",
+                                        "val": "01110"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_z_2_end",
+                                        "val": "01100"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_y_1",
+                                        "val": "00101"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_x_2",
+                                        "val": "00011"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_z_1_end",
+                                        "val": "01010"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_y_2_end",
+                                        "val": "01000"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_x_1",
+                                        "val": "00001"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_z_1_end",
+                                        "val": "10110"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_z_1",
+                                        "val": "10101"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_y_2_end",
+                                        "val": "10100"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_y_2",
+                                        "val": "10011"
+                                    },
+                                    {
+                                        "name": "send_serial_wait",
+                                        "val": "00000"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_x_1",
+                                        "val": "01101"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_z_2_end",
+                                        "val": "11000"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_y_1_end",
+                                        "val": "10010"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_z_2",
+                                        "val": "01011"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_y_1",
+                                        "val": "10001"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_x_2_end",
+                                        "val": "10000"
+                                    },
+                                    {
+                                        "name": "send_serial_accel_x_2",
+                                        "val": "01111"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_z_1",
+                                        "val": "01001"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_y_2",
+                                        "val": "00111"
+                                    },
+                                    {
+                                        "name": "send_serial_gyro_y_1_end",
+                                        "val": "00110"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

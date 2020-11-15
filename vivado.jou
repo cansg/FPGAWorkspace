@@ -1,0 +1,64 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Nov 12 16:44:32 2020
+# Process ID: 9392
+# Current directory: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9340 C:\Users\cansuge\Documents\FPGA\SPI\SPI_Serial\SPI_Serial.xpr
+# Log file: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/vivado.log
+# Journal file: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.xpr
+update_compile_order -fileset sources_1
+launch_simulation -simset [get_filesets sim_3 ]
+open_wave_config C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/cfg_tb_test_serial_behav.wcfg
+source spi_to_serial.tcl
+run 10000 ns
+run 10000 ns
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top cfg_tb_test_serial [get_filesets sim_3]
+set_property top_lib xil_defaultlib [get_filesets sim_3]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_3
+run 10000 ns
+launch_simulation -simset [get_filesets sim_3 ]
+launch_runs synth_2 -jobs 2
+wait_on_run synth_2
+export_ip_user_files -of_objects  [get_files C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/cfg_tb_test_serial_behav.wcfg] -no_script -reset -force -quiet
+remove_files  -fileset sim_3 C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/cfg_tb_test_serial_behav.wcfg
+launch_runs impl_2 -jobs 2
+wait_on_run impl_2
+export_ip_user_files -of_objects  [get_files C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_3/new/SPI_Serial_tb.vhd] -no_script -reset -force -quiet
+remove_files  -fileset sim_3 C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_3/new/SPI_Serial_tb.vhd
+file delete -force C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_3/new/SPI_Serial_tb.vhd
+set_property SOURCE_SET sources_1 [get_filesets sim_3]
+add_files -fileset sim_3 -norecurse C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_1/new/SPI_Serial_tb.vhd
+update_compile_order -fileset sim_3
+close_sim
+launch_simulation -simset [get_filesets sim_3 ]
+source spi_to_serial.tcl
+reset_run synth_2
+launch_runs synth_2 -jobs 2
+wait_on_run synth_2
+launch_runs impl_2 -jobs 2
+wait_on_run impl_2
+launch_runs impl_2 -to_step write_bitstream -jobs 2
+wait_on_run impl_2
+open_run impl_2
+set_property SOURCE_SET sources_1 [get_filesets sim_3]
+add_files -fileset sim_3 -norecurse C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_1/new/SPI_Serial_tb.vhd
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top cfg_tb_spi_to_serial [get_filesets sim_3]
+set_property top_lib xil_defaultlib [get_filesets sim_3]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_3
+launch_simulation -simset [get_filesets sim_3 ]
+launch_simulation -simset [get_filesets sim_3 ]
+launch_simulation -simset [get_filesets sim_3 ]
+close_sim

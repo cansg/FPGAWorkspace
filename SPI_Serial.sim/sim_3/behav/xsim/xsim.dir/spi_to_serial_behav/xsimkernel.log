@@ -1,0 +1,7 @@
+Running: xsim.dir/spi_to_serial_behav/xsimk.exe -simmode gui -wdb spi_to_serial_behav.wdb -simrunnum 0 -socket 58394
+Design successfully loaded
+Design Loading Memory Usage: 6104 KB (Peak: 6104 KB)
+Design Loading CPU Usage: 30 ms
+Simulation completed
+Simulation Memory Usage: 6832 KB (Peak: 6832 KB)
+Simulation CPU Usage: 92 ms

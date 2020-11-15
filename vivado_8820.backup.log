@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Nov 12 16:41:31 2020
+# Process ID: 8820
+# Current directory: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15816 C:\Users\cansuge\Documents\FPGA\SPI\SPI_Serial\test_serial.xpr
+# Log file: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/vivado.log
+# Journal file: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/test_serial.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/cansuge/Documents/FPGA/SPI/test_serial' since last save.
+CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/test_serial.srcs/sources_1/imports/rtl/uart_rx.vhd', nor could it be found using path 'C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.srcs/sources_1/imports/rtl/uart_rx.vhd'.
+CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/test_serial.srcs/sources_1/imports/rtl/uart_tx.vhd', nor could it be found using path 'C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.srcs/sources_1/imports/rtl/uart_tx.vhd'.
+CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/test_serial.srcs/sources_1/imports/rtl/SPI_to_Serial.vhd', nor could it be found using path 'C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.srcs/sources_1/imports/rtl/SPI_to_Serial.vhd'.
+CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/test_serial.srcs/constrs_1/imports/test_2.srcs/Cmod-A7-Master.xdc', nor could it be found using path 'C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.srcs/constrs_1/imports/test_2.srcs/Cmod-A7-Master.xdc'.
+CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/test_serial.srcs/sim_1/new/SPI_tb.vhd', nor could it be found using path 'C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.srcs/sim_1/new/SPI_tb.vhd'.
+CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/test_serial.srcs/sim_1/new/SPI_tb.vhd', nor could it be found using path 'C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.srcs/sim_1/new/SPI_tb.vhd'.
+CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/test_serial.srcs/sim_3/new/SPI_Serial_tb.vhd', nor could it be found using path 'C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.srcs/sim_3/new/SPI_Serial_tb.vhd'.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-509] GeneratedRun file for 'synth_2' not found
+WARNING: [Project 1-509] GeneratedRun file for 'impl_2' not found
+WARNING: [filemgmt 56-2] IPUserFilesDir: Could not find the directory 'C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/test_serial.ip_user_files', nor could it be found using path 'C:/Users/cansuge/Documents/FPGA/SPI/test_serial/test_serial.ip_user_files'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.1/data/ip'.
+open_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:07 . Memory (MB): peak = 1028.887 ; gain = 0.000
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_2
+update_compile_order -fileset sim_3
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 12 16:42:49 2020...

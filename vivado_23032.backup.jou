@@ -1,0 +1,26 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Nov 12 16:42:52 2020
+# Process ID: 23032
+# Current directory: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19976 C:\Users\cansuge\Documents\FPGA\SPI\SPI_Serial\SPI_Serial.xpr
+# Log file: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/vivado.log
+# Journal file: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.xpr
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top spi_to_serial [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top spi_to_serial [get_filesets sim_3]
+set_property top_lib xil_defaultlib [get_filesets sim_3]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]

@@ -1,0 +1,1 @@
+-wto "3000418f0f78408a921f755dd028cac7" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "spi_to_serial_behav" "xil_defaultlib.spi_to_serial" -log "elaborate.log" 

@@ -1,0 +1,26 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Nov 12 16:42:52 2020
+# Process ID: 23032
+# Current directory: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19976 C:\Users\cansuge\Documents\FPGA\SPI\SPI_Serial\SPI_Serial.xpr
+# Log file: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/vivado.log
+# Journal file: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.1/data/ip'.
+open_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:06 . Memory (MB): peak = 1030.387 ; gain = 0.000
+update_compile_order -fileset sources_1
+set_property top spi_to_serial [current_fileset]
+update_compile_order -fileset sources_1
+set_property top spi_to_serial [get_filesets sim_3]
+set_property top_lib xil_defaultlib [get_filesets sim_3]
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 12 16:44:17 2020...
