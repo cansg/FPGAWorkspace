@@ -589,7 +589,7 @@ begin
                     state_spi <= spi_init_done;
                     
              when spi_init_done => 
-                    spi_tx_count <= "1011"; --only to send register reading address
+                    spi_tx_count <= "1101"; --only to send register reading address
                     state_spi <= spi_send_addr;
                    
             when spi_send_addr =>
