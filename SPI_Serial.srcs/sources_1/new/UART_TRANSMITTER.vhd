@@ -112,12 +112,9 @@ uart: process(i_Clk)
                 else
                     sig_clk_count <= 0;
                     sig_tx_done   <= '1';
-                    uart_state   <= uart_clean;
+                    uart_state   <= uart_idle;
                 end if;
-                    -- Stay here 1 clock
---        when uart_clean =>
---          sig_tx_done   <= '1';
---          uart_state   <= uart_idle;
+
           
             when others =>
                 uart_state <= uart_idle;

@@ -77,7 +77,7 @@ begin
     wait for 100 ns;
 
         -- EDIT Add stimuli here
-        wait for 1000000 * TbPeriod;
+        wait for 10000000 * TbPeriod;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';

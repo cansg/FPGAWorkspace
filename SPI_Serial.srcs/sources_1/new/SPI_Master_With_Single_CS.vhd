@@ -71,7 +71,7 @@ architecture RTL of SPI_Master_With_Single_CS is
   type t_SM_CS is (IDLE, TRANSFER, CS_INACTIVE);
 
   signal r_SM_CS : t_SM_CS;
-  signal r_CS_n : std_logic;
+  signal r_CS_n : std_logic := '1';
   signal r_CS_Inactive_Count : integer range 0 to CS_INACTIVE_CLKS;
   signal r_TX_Count : integer range 0 to MAX_BYTES_PER_CS + 1;
   signal w_Master_Ready : std_logic;
