@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Sun Nov 15 18:55:44 2020
+| Date         : Mon Nov 16 20:53:09 2020
 | Host         : CANSU-GENCOGLU0 running 64-bit major release  (build 9200)
 | Command      : report_drc -file spi_to_serial_drc_opted.rpt -pb spi_to_serial_drc_opted.pb -rpx spi_to_serial_drc_opted.rpx
 | Design       : spi_to_serial
@@ -24,11 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 1
+             Violations found: 2
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
+| IOSR-1   | Warning  | IOB set reset sharing                               | 1          |
 +----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -44,6 +45,11 @@ Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_des
  #where value2 is the voltage provided to configuration bank 0
 
 Refer to the device configuration user guide for more information.
+Related violations: <none>
+
+IOSR-1#1 Warning
+IOB set reset sharing  
+IO i_SPI_MISO connects to flops which have these btn0_IBUF, ILA/U0/ila_core_inst/use_probe_debug_circuit set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
 Related violations: <none>
 
 

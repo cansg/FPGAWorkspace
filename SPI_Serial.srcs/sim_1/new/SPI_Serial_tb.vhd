@@ -76,6 +76,10 @@ begin
     btn0 <= '0';
     wait for 100 ns;
 
+wait for 100 ns;
+btn1 <= '1';
+wait for 100 ns;
+btn1 <= '0';
         -- EDIT Add stimuli here
         wait for 10000000 * TbPeriod;
 

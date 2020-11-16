@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: Cansu Gencoglu
 -- 
--- Create Date: 11/14/2020 06:07:01 PM
+-- Create Date: 11/10/2020 06:07:01 PM
 -- Design Name: 
 -- Module Name: UART_TRANSMITTER - Behavioral
 -- Project Name: 
@@ -37,7 +37,6 @@ entity UART_TRANSMITTER is
     i_Clk       : in  std_logic;
     i_TX_DV     : in  std_logic;
     i_TX_Byte   : in  std_logic_vector(7 downto 0);
-    --o_TX_Active : out std_logic;
     o_TX_Serial : out std_logic;
     o_TX_Done   : out std_logic
     );
@@ -46,7 +45,7 @@ end UART_TRANSMITTER;
 architecture Behavioral of UART_TRANSMITTER is
 
     constant tx_start_bit : std_logic := '0';
-    constant tx_idle_bit  : std_logic := '1';
+    constant tx_idle_bit  : std_logic := '1';--or stop bit
 
     signal sig_tx_byte   : std_logic_vector(7 downto 0) := (others => '0');
     signal sig_tx_done   : std_logic := '0';
@@ -54,7 +53,7 @@ architecture Behavioral of UART_TRANSMITTER is
     signal sig_bit_loc  : integer range 0 to 7 := 0;  
     
     type UART_State_Type is (uart_idle, uart_start, uart_send_byte,
-                     uart_stop, uart_clean);
+                     uart_stop);
                      
     signal uart_state: UART_State_Type := uart_idle;
   
@@ -106,7 +105,7 @@ uart: process(i_Clk)
             
             when uart_stop =>
             
-          o_TX_Serial <= '1';
+                o_TX_Serial <= '1';
                 if sig_clk_count < g_CLKS_PER_BIT-1 then --wait for valid baud rate
                     sig_clk_count <= sig_clk_count + 1;
                 else

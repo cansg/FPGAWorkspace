@@ -102,7 +102,6 @@ architecture rtl of spi_to_serial is
   component SPI_Master_With_Single_CS is
   generic (
     SPI_MODE          : integer := SPI_MODE;
-    CLKS_PER_HALF_BIT : integer := const_CLKS_PER_HALF_BIT_1MHZ;
     MAX_BYTES_PER_CS  : integer := MAX_BYTES_PER_CS;
     CS_INACTIVE_CLKS  : integer := (const_CS_INACTIVE_CLKS * const_CLKS_PER_HALF_BIT_1MHZ)
     );
@@ -110,7 +109,8 @@ architecture rtl of spi_to_serial is
    -- Control/Data Signals,
    i_Rst_L : in std_logic;     -- FPGA Reset
    i_Clk   : in std_logic;     -- FPGA Clock
-   
+   i_sig_freq_change : in std_logic; --to change SPI frequency
+
    -- TX (MOSI) Signals
    i_TX_Count : in  std_logic_vector;  -- # bytes per CS low
    i_TX_Byte  : in  std_logic_vector(7 downto 0);  -- Byte to transmit on MOSI
@@ -304,7 +304,7 @@ architecture rtl of spi_to_serial is
   signal ser_accel_z   : std_logic_vector(15 downto 0) := (others => '0');
   
     signal wait_state: wait_state_type := wait_for_it;
-
+    signal sig_freq_change : std_logic := '1';
     -- Sends a single byte from master spi. 
   procedure StartSendSingleByte (
     data          : in  std_logic_vector(7 downto 0);
@@ -443,12 +443,12 @@ begin
   SPI_Master: SPI_Master_With_Single_CS
   Generic map (
       SPI_MODE          => SPI_MODE,
-      CLKS_PER_HALF_BIT => const_CLKS_PER_HALF_BIT_1MHZ,
       MAX_BYTES_PER_CS  => MAX_BYTES_PER_CS,           -- max 13 bytes per CS
       CS_INACTIVE_CLKS  => (const_CS_INACTIVE_CLKS * const_CLKS_PER_HALF_BIT_1MHZ))
   port map (
       i_Rst_L    => rst_n,                  -- FPGA Reset (push button)
       i_Clk      => clk_100,                -- FPGA Clock
+      i_sig_freq_change => sig_freq_change,
       -- TX (MOSI Signals)
       i_TX_Count => spi_TX_Count,           -- Always 1 bytes transmit for address per CS, changes if sets registers
       i_TX_Byte  => spi_tx_byte,            -- Can stuff with zeros
@@ -681,177 +681,178 @@ begin
   end process;  
   
   --to send received sensor data from serial interface
---  send_serial: process(clk_100, rst_n)
---  begin
---    if rst_n = '0' then
---      state_serial_send <= send_serial_wait; 
---      ser_tx_dv <= '0'; 
---      ser_tx_byte <= "00000000";
---    elsif rising_edge(clk_100) then
---      case state_serial_send is
---        when send_serial_wait =>
---            if (state_spi_read = read_done) then
---             ser_gyro_x <= gyro_x;
---             ser_gyro_y <= gyro_y;
---             ser_gyro_z <= gyro_z;
---             ser_accel_x <= accel_x;
---             ser_accel_y <= accel_y;
---             ser_accel_z <= accel_z;
---             state_serial_send <= send_serial_gyro_x_1;
---            end if;
+  send_serial: process(clk_100, rst_n)
+  begin
+    if rst_n = '0' then
+      state_serial_send <= send_serial_wait; 
+      ser_tx_dv <= '0'; 
+      ser_tx_byte <= "00000000";
+    elsif rising_edge(clk_100) then
+      case state_serial_send is
+        when send_serial_wait =>
+            if (state_spi_read = read_done) then
+             ser_gyro_x <= gyro_x;
+             ser_gyro_y <= gyro_y;
+             ser_gyro_z <= gyro_z;
+             ser_accel_x <= accel_x;
+             ser_accel_y <= accel_y;
+             ser_accel_z <= accel_z;
+             state_serial_send <= send_serial_gyro_x_1;
+            end if;
             
---       when send_serial_gyro_x_1 =>
---         ser_tx_byte <= ser_gyro_x(15 downto 8);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_gyro_x_1_end;
+       when send_serial_gyro_x_1 =>
+         ser_tx_byte <= ser_gyro_x(15 downto 8);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_gyro_x_1_end;
         
---        when send_serial_gyro_x_1_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_gyro_x_2;                  
---         end if;
+        when send_serial_gyro_x_1_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_gyro_x_2;                  
+         end if;
          
---        when send_serial_gyro_x_2 =>
---         ser_tx_byte <= ser_gyro_x(7 downto 0);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_gyro_x_2_end;
+        when send_serial_gyro_x_2 =>
+         ser_tx_byte <= ser_gyro_x(7 downto 0);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_gyro_x_2_end;
         
---        when send_serial_gyro_x_2_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_gyro_y_1;                  
---         end if;
+        when send_serial_gyro_x_2_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_gyro_y_1;                  
+         end if;
         
---        when send_serial_gyro_y_1 =>
---         ser_tx_byte <= ser_gyro_y(15 downto 8);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_gyro_y_1_end;
+        when send_serial_gyro_y_1 =>
+         ser_tx_byte <= ser_gyro_y(15 downto 8);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_gyro_y_1_end;
         
---        when send_serial_gyro_y_1_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_gyro_y_2;                  
---         end if;
+        when send_serial_gyro_y_1_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_gyro_y_2;                  
+         end if;
          
---        when send_serial_gyro_y_2 =>
---         ser_tx_byte <= ser_gyro_y(7 downto 0);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_gyro_y_2_end;
+        when send_serial_gyro_y_2 =>
+         ser_tx_byte <= ser_gyro_y(7 downto 0);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_gyro_y_2_end;
         
---        when send_serial_gyro_y_2_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_gyro_z_1;                  
---         end if;
+        when send_serial_gyro_y_2_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_gyro_z_1;                  
+         end if;
          
---        when send_serial_gyro_z_1 =>
---         ser_tx_byte <= ser_gyro_z(15 downto 8);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_gyro_z_1_end;
+        when send_serial_gyro_z_1 =>
+         ser_tx_byte <= ser_gyro_z(15 downto 8);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_gyro_z_1_end;
         
---        when send_serial_gyro_z_1_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_gyro_z_2;                  
---         end if;
+        when send_serial_gyro_z_1_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_gyro_z_2;                  
+         end if;
          
---         when send_serial_gyro_z_2 =>
---         ser_tx_byte <= ser_gyro_z(7 downto 0);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_gyro_z_2_end;
+         when send_serial_gyro_z_2 =>
+         ser_tx_byte <= ser_gyro_z(7 downto 0);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_gyro_z_2_end;
         
---        when send_serial_gyro_z_2_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_accel_x_1;                  
---         end if;
+        when send_serial_gyro_z_2_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_accel_x_1;                  
+         end if;
 
---        when send_serial_accel_x_1 =>
---         ser_tx_byte <= ser_accel_x(15 downto 8);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_accel_x_1_end;
+        when send_serial_accel_x_1 =>
+         ser_tx_byte <= ser_accel_x(15 downto 8);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_accel_x_1_end;
         
---        when send_serial_accel_x_1_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_accel_x_2;                  
---         end if;
+        when send_serial_accel_x_1_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_accel_x_2;                  
+         end if;
          
---        when send_serial_accel_x_2 =>
---         ser_tx_byte <= ser_accel_x(7 downto 0);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_accel_x_2_end;
+        when send_serial_accel_x_2 =>
+         ser_tx_byte <= ser_accel_x(7 downto 0);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_accel_x_2_end;
         
---        when send_serial_accel_x_2_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_accel_y_1;                  
---         end if;
+        when send_serial_accel_x_2_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_accel_y_1;                  
+         end if;
         
---        when send_serial_accel_y_1 =>
---         ser_tx_byte <= ser_accel_y(15 downto 8);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_accel_y_1_end;
+        when send_serial_accel_y_1 =>
+         ser_tx_byte <= ser_accel_y(15 downto 8);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_accel_y_1_end;
         
---        when send_serial_accel_y_1_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_accel_y_2;                  
---         end if;
+        when send_serial_accel_y_1_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_accel_y_2;                  
+         end if;
          
---        when send_serial_accel_y_2 =>
---         ser_tx_byte <= ser_accel_y(7 downto 0);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_accel_y_2_end;
+        when send_serial_accel_y_2 =>
+         ser_tx_byte <= ser_accel_y(7 downto 0);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_accel_y_2_end;
         
---        when send_serial_accel_y_2_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_accel_z_1;                  
---         end if;
+        when send_serial_accel_y_2_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_accel_z_1;                  
+         end if;
          
---        when send_serial_accel_z_1 =>
---         ser_tx_byte <= ser_accel_z(15 downto 8);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_accel_z_1_end;
+        when send_serial_accel_z_1 =>
+         ser_tx_byte <= ser_accel_z(15 downto 8);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_accel_z_1_end;
         
---        when send_serial_accel_z_1_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_accel_z_2;                  
---         end if;
+        when send_serial_accel_z_1_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_accel_z_2;                  
+         end if;
          
---        when send_serial_accel_z_2 =>
---         ser_tx_byte <= ser_accel_z(7 downto 0);
---         ser_tx_dv <= '1'; 
---         state_serial_send <= send_serial_accel_z_2_end;
+        when send_serial_accel_z_2 =>
+         ser_tx_byte <= ser_accel_z(7 downto 0);
+         ser_tx_dv <= '1'; 
+         state_serial_send <= send_serial_accel_z_2_end;
         
---        when send_serial_accel_z_2_end =>                               
---         ser_tx_dv <= '0';
---         if ser_tx_done = '1' then
---           state_serial_send <= send_serial_wait;                  
---         end if;
+        when send_serial_accel_z_2_end =>                               
+         ser_tx_dv <= '0';
+         if ser_tx_done = '1' then
+           state_serial_send <= send_serial_wait;                  
+         end if;
          
---       when others => 
---          state_serial_send <= send_serial_wait;
+       when others => 
+          state_serial_send <= send_serial_wait;
           
---      end case;
---    end if;
---  end process;
+      end case;
+    end if;
+  end process;
   
+  --btn1 is used to change SPI frequency 
 speed_switching: process(clk_100, rst_n)
-   variable CLKS_PER_HALF_BIT : integer := CLKS_PER_HALF_BIT_2MHZ; --TODO: not finished yet
 
   begin
     if rst_n = '0' then
-        change_spi_speed <= '0';
+        sig_freq_change <= '0';
+        change_spi_speed_done <= '0';
     elsif rising_edge(clk_100) then 
         if((change_spi_speed = '1') and (change_spi_speed_done /= '1')) then
-            if( CLKS_PER_HALF_BIT = const_CLKS_PER_HALF_BIT_1MHZ) then
-                CLKS_PER_HALF_BIT := CLKS_PER_HALF_BIT_2MHZ;
+            if( sig_freq_change = '0') then
+                sig_freq_change <= '1';
                 change_spi_speed_done <= '1';
             else
-                CLKS_PER_HALF_BIT := const_CLKS_PER_HALF_BIT_1MHZ;
+                sig_freq_change <= '0';
                 change_spi_speed_done <= '1';
             end if;
             
@@ -884,44 +885,44 @@ end process;
   
     --to send eight bit count value from serial interface on every second
 
-  send_count_eight: process(clk_100, rst_n, flag_1Hz)
+--  send_count_eight: process(clk_100, rst_n, flag_1Hz)
 
-  begin
-    if rst_n = '0' then
-        count_eight_state <= send_ready_1; 
-    elsif rising_edge(clk_100) then 
-       case count_eight_state is 
-        when send_ready_1 =>
-           if(flag_1Hz = '1') then
-                ser_tx_byte <= eight_bit_count;
-                ser_tx_dv <= '1'; 
-                count_eight_state <= send_end_1;
-           end if;
+--  begin
+--    if rst_n = '0' then
+--        count_eight_state <= send_ready_1; 
+--    elsif rising_edge(clk_100) then 
+--       case count_eight_state is 
+--        when send_ready_1 =>
+--           if(flag_1Hz = '1') then
+--                ser_tx_byte <= eight_bit_count;
+--                ser_tx_dv <= '1'; 
+--                count_eight_state <= send_end_1;
+--           end if;
            
-        when send_end_1 =>
-                ser_tx_dv <= '0';
-                if ser_tx_done = '1' then
-                    count_eight_state <= send_ready_2;                  
-                end if;
+--        when send_end_1 =>
+--                ser_tx_dv <= '0';
+--                if ser_tx_done = '1' then
+--                    count_eight_state <= send_ready_2;                  
+--                end if;
                 
-        when send_ready_2 =>
-           if(flag_1Hz = '0') then
-                ser_tx_byte <= eight_bit_count;
-                ser_tx_dv <= '1'; 
-                count_eight_state <= send_end_2;
-           end if;
+--        when send_ready_2 =>
+--           if(flag_1Hz = '0') then
+--                ser_tx_byte <= eight_bit_count;
+--                ser_tx_dv <= '1'; 
+--                count_eight_state <= send_end_2;
+--           end if;
            
-        when send_end_2 =>
-                ser_tx_dv <= '0';
-                if ser_tx_done = '1' then
-                    count_eight_state <= send_ready_1;                  
-                end if;
+--        when send_end_2 =>
+--                ser_tx_dv <= '0';
+--                if ser_tx_done = '1' then
+--                    count_eight_state <= send_ready_1;                  
+--                end if;
                 
-        when others =>
-            count_eight_state <= send_ready_1; 
-       end case;
-    end if;
-  end process;
+--        when others =>
+--            count_eight_state <= send_ready_1; 
+--       end case;
+--    end if;
+--  end process;
   
   o_SPI_Clk         <= sig_o_SPI_Clk;
   --sig_i_SPI_MISO    <= i_SPI_MISO ;

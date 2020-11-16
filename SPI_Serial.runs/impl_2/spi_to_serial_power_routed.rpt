@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date             : Sun Nov 15 18:57:52 2020
+| Date             : Mon Nov 16 20:55:01 2020
 | Host             : CANSU-GENCOGLU0 running 64-bit major release  (build 9200)
 | Command          : report_power -file spi_to_serial_power_routed.rpt -pb spi_to_serial_power_summary_routed.pb -rpx spi_to_serial_power_routed.rpx
 | Design           : spi_to_serial
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.190        |
+| Total On-Chip Power (W)  | 0.188        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.118        |
+| Dynamic (W)              | 0.116        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.1         |
@@ -53,20 +53,20 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.023 |        6 |       --- |             --- |
-| Slice Logic              |     0.003 |    12574 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     3435 |     20800 |           16.51 |
-|   Register               |    <0.001 |     5608 |     41600 |           13.48 |
+| Slice Logic              |     0.003 |    12626 |       --- |             --- |
+|   LUT as Logic           |     0.003 |     3455 |     20800 |           16.61 |
+|   Register               |    <0.001 |     5620 |     41600 |           13.51 |
+|   CARRY4                 |    <0.001 |      277 |      8150 |            3.40 |
 |   LUT as Distributed RAM |    <0.001 |      152 |      9600 |            1.58 |
-|   CARRY4                 |    <0.001 |      269 |      8150 |            3.30 |
 |   LUT as Shift Register  |    <0.001 |      777 |      9600 |            8.09 |
-|   F7/F8 Muxes            |    <0.001 |      143 |     32600 |            0.44 |
-|   Others                 |     0.000 |      935 |       --- |             --- |
-| Signals                  |     0.004 |     8445 |       --- |             --- |
+|   F7/F8 Muxes            |    <0.001 |      144 |     32600 |            0.44 |
+|   Others                 |     0.000 |      937 |       --- |             --- |
+| Signals                  |     0.004 |     8474 |       --- |             --- |
 | Block RAM                |     0.001 |        2 |        50 |            4.00 |
 | MMCM                     |     0.084 |        1 |         5 |           20.00 |
-| I/O                      |     0.003 |       10 |       106 |            9.43 |
+| I/O                      |    <0.001 |       10 |       106 |            9.43 |
 | Static Power             |     0.072 |          |           |                 |
-| Total                    |     0.190 |          |           |                 |
+| Total                    |     0.188 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,9 +76,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.041 |       0.031 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.042 |       0.032 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.059 |       0.047 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -148,7 +148,7 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| spi_to_serial            |     0.118 |
+| spi_to_serial            |     0.116 |
 |   ILA                    |     0.025 |
 |     U0                   |     0.025 |
 |       ila_core_inst      |     0.025 |

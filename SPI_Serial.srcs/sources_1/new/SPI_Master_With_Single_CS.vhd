@@ -38,7 +38,6 @@ use ieee.numeric_std.all;
 entity SPI_Master_With_Single_CS is
   generic (
     SPI_MODE          : integer := 3;
-    CLKS_PER_HALF_BIT : integer := 400;
     MAX_BYTES_PER_CS  : integer := 13;
     CS_INACTIVE_CLKS  : integer := 10
     );
@@ -46,7 +45,7 @@ entity SPI_Master_With_Single_CS is
    -- Control/Data Signals,
    i_Rst_L : in std_logic;     -- FPGA Reset
    i_Clk   : in std_logic;     -- FPGA Clock
-   
+   i_sig_freq_change : in std_logic; --to change SPI frequency
    -- TX (MOSI) Signals
    i_TX_Count : in  std_logic_vector;  -- # bytes per CS low
    i_TX_Byte  : in  std_logic_vector(7 downto 0);  -- Byte to transmit on MOSI
@@ -82,12 +81,14 @@ begin
   -- Instantiate Master
   SPI_Master_1 : entity work.SPI_Master
     generic map (
-      SPI_MODE          => SPI_MODE,
-      CLKS_PER_HALF_BIT => CLKS_PER_HALF_BIT)
+      SPI_MODE          => SPI_MODE
+      )
     port map (
       -- Control/Data Signals,
       i_Rst_L    => i_Rst_L,            -- FPGA Reset
       i_Clk      => i_Clk,              -- FPGA Clock
+      i_sig_freq_change => i_sig_freq_change,
+
       -- TX (MOSI) Signals
       i_TX_Byte  => i_TX_Byte,          -- Byte to transmit
       i_TX_DV    => i_TX_DV,            -- Data Valid pulse

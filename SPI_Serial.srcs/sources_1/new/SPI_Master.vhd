@@ -36,14 +36,13 @@ use ieee.numeric_std.all;
 
 entity SPI_Master is
   generic (
-    SPI_MODE          : integer := 3;
-    CLKS_PER_HALF_BIT : integer := 400
+    SPI_MODE          : integer := 3
     );
   port (
    -- Control/Data Signals,
    i_Rst_L : in std_logic;        -- FPGA Reset
    i_Clk   : in std_logic;        -- FPGA Clock
-   
+   i_sig_freq_change : in std_logic; --to change SPI frequency
    -- TX (MOSI) Signals
    i_TX_Byte   : in std_logic_vector(7 downto 0);   -- Byte to transmit on MOSI
    i_TX_DV     : in std_logic;          -- Data Valid Pulse with i_TX_Byte
@@ -62,11 +61,14 @@ end entity SPI_Master;
 
 architecture RTL of SPI_Master is
 
+  constant CLKS_PER_HALF_BIT_1: integer := 400;
+  constant CLKS_PER_HALF_BIT_2: integer := 200;
+
   -- SPI Interface (All Runs at SPI Clock Domain)
   signal w_CPOL : std_logic;     -- Clock polarity
   signal w_CPHA : std_logic;     -- Clock phase
 
-  signal r_SPI_Clk_Count : integer range 0 to CLKS_PER_HALF_BIT*2-1;
+  signal r_SPI_Clk_Count : integer range 0 to CLKS_PER_HALF_BIT_1*2-1;
   signal r_SPI_Clk       : std_logic;
   signal r_SPI_Clk_Edges : integer range 0 to 16;
   signal r_Leading_Edge  : std_logic;
@@ -77,6 +79,7 @@ architecture RTL of SPI_Master is
   signal r_RX_Bit_Count : unsigned(2 downto 0);
   signal r_TX_Bit_Count : unsigned(2 downto 0);
   signal sig_TX_Ready   : std_logic;         -- Transmit Ready for next byte
+  signal CLKS_PER_HALF_BIT : integer := CLKS_PER_HALF_BIT_1;
 
 begin
 
@@ -102,8 +105,17 @@ begin
       r_Trailing_Edge <= '0';
       r_SPI_Clk       <= w_CPOL; -- assign default state to idle state
       r_SPI_Clk_Count <= 0;
+      if(i_sig_freq_change = '1') then 
+            CLKS_PER_HALF_BIT <= CLKS_PER_HALF_BIT_1;
+        else
+            CLKS_PER_HALF_BIT <= CLKS_PER_HALF_BIT_2;
+      end if;
     elsif rising_edge(i_Clk) then
-
+        if(i_sig_freq_change = '1') then 
+            CLKS_PER_HALF_BIT <= CLKS_PER_HALF_BIT_1;
+        else
+            CLKS_PER_HALF_BIT <= CLKS_PER_HALF_BIT_2;
+        end if;
       -- Default assignments
       r_Leading_Edge  <= '0';
       r_Trailing_Edge <= '0';

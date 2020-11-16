@@ -1,4 +1,7 @@
-Running: xsim.dir/cfg_tb_spi_to_serial_behav/xsimk.exe -simmode gui -wdb cfg_tb_spi_to_serial_behav.wdb -simrunnum 0 -socket 53968
+Running: xsim.dir/cfg_tb_spi_to_serial_behav/xsimk.exe -simmode gui -wdb cfg_tb_spi_to_serial_behav.wdb -simrunnum 0 -socket 62463
 Design successfully loaded
-Design Loading Memory Usage: 6124 KB (Peak: 6124 KB)
-Design Loading CPU Usage: 31 ms
+Design Loading Memory Usage: 6116 KB (Peak: 6116 KB)
+Design Loading CPU Usage: 62 ms
+Simulation completed
+Simulation Memory Usage: 6988 KB (Peak: 6988 KB)
+Simulation CPU Usage: 124 ms

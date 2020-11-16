@@ -1,0 +1,9 @@
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+Stopped at time : 300 ns : File "C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_1/new/SPI_Serial_tb.vhd" Line 80
+Stopped at time : 300 ns : File "C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_1/new/SPI_Serial_tb.vhd" Line 81
+Stopped at time : 400 ns : File "C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_1/new/SPI_Serial_tb.vhd" Line 82
+Stopped at time : 400 ns : File "C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_1/new/SPI_Serial_tb.vhd" Line 84
+Stopped at time : 400 ns : File "C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_1/new/SPI_Serial_tb.vhd" Line 59
+Stopped at time : 400 ns : File "C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sim_1/new/SPI_Serial_tb.vhd" Line 62
+Stopped at time : 400 ns : File "C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.srcs/sources_1/imports/rtl/SPI_to_Serial.vhd" Line 939

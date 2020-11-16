@@ -2,8 +2,8 @@
 # Webtalk v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Sat Nov 14 20:58:29 2020
-# Process ID: 30776
+# Start of session at: Mon Nov 16 21:53:09 2020
+# Process ID: 12492
 # Current directory: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.sim/sim_3/behav/xsim
 # Command line: wbtcv.exe -mode batch -source C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.sim/sim_3/behav/xsim/xsim.dir/cfg_tb_spi_to_serial_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.sim/sim_3/behav/xsim/webtalk.log
