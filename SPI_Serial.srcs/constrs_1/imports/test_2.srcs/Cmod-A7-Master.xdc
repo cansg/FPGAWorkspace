@@ -112,10 +112,9 @@ set_property IOSTANDARD LVCMOS33 [get_ports i_SPI_MISO]
 set_property PACKAGE_PIN J3 [get_ports o_SPI_CS_n]
 set_property IOSTANDARD LVCMOS33 [get_ports o_SPI_CS_n]
 set_property PACKAGE_PIN L1 [get_ports o_SPI_Clk]
-set_property PACKAGE_PIN J1 [get_ports o_SPI_MOSI]
+set_property PACKAGE_PIN K2 [get_ports o_SPI_MOSI]
 set_property IOSTANDARD LVCMOS33 [get_ports o_SPI_MOSI]
 set_property IOSTANDARD LVCMOS33 [get_ports o_SPI_Clk]
-set_property PACKAGE_PIN K2 [get_ports i_SPI_MISO]
 
 set_property PACKAGE_PIN N2 [get_ports o_ser_tx]
 set_property PACKAGE_PIN P1 [get_ports i_ser_rx]
@@ -132,7 +131,9 @@ set_property PACKAGE_PIN A18 [get_ports btn0]
 set_property IOSTANDARD LVCMOS33 [get_ports btn0]
 
 
+
+set_property PACKAGE_PIN J1 [get_ports i_SPI_MISO]
 set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
 set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
-connect_debug_port dbg_hub/clk [get_nets clk_100]
+connect_debug_port dbg_hub/clk [get_nets ila_test_clk_100]

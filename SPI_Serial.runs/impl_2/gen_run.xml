@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_2" LaunchPart="xc7a35tcpg236-1" LaunchTime="1605549041">
+<GenRun Id="impl_2" LaunchPart="xc7a35tcpg236-1" LaunchTime="1605608756">
   <File Type="BITSTR-BMM" Name="spi_to_serial_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="spi_to_serial_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="spi_to_serial_timing_summary_init.rpt"/>

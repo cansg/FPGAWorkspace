@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Mon Nov 16 20:51:49 2020
-# Process ID: 13876
+# Start of session at: Tue Nov 17 13:26:59 2020
+# Process ID: 33968
 # Current directory: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.runs/impl_2
 # Command line: vivado.exe -log spi_to_serial.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source spi_to_serial.tcl -notrace
 # Log file: C:/Users/cansuge/Documents/FPGA/SPI/SPI_Serial/SPI_Serial.runs/impl_2/spi_to_serial.vdi
